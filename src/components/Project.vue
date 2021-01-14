@@ -1,10 +1,10 @@
 <template>
   <div class="project">
-    <h1>Project</h1>
     <div class="project__content">
-      <h1 class="anim__stagger-default">{{title}}</h1>
-      <p class="anim__stagger-default">{{id}}</p>
-      <p class="anim__stagger-default">{{src}}</p>
+      <h1 class="anim__stagger-default">{{details.title}}</h1>
+      <p class="anim__stagger-default">{{details.id}}</p>
+      <p class="anim__stagger-default">{{details.thumbnail}}</p>
+      <p v-for="item in details.text" :key="item">{{item}}</p>
     </div>
   </div>
 </template>
@@ -22,26 +22,12 @@ export default {
     }
   },
   computed: {
-    count () {
-	    return store.state.count
+    details () {
+      return store.state.details
     },
-    id () {
-      return store.state.id
-    },
-    title () {
-      return store.state.title
-    },
-    src () {
-      return store.state.src
-    }
   },
   methods: {
-    getProjectData () {
-      // store.state.title = this.projectTitle;
-      // store.state.src = this.projectSrc;
-      store.commit('getTitle');
-      store.commit('getImage');
-    }
+
   }
 }
 </script>

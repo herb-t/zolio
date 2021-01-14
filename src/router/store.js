@@ -5,16 +5,29 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    count: 0,
-    id: 0,
-    title: 'none',
-    src: 'https://placekitten.com/1920/1080'
+    details: {
+    id: 1,
+    slug: 'project-1',
+    title: 'Project Uno',
+    thumbnail: 'static/images/thumbnails/memory.png',
+    thumbnail_caption: 'website',
+    images: [
+      'static/images/preview/preview-artifact.jpg'
+    ],
+    text: [
+      'Text line one.',
+      'Text line two!'
+    ],
+    a11y: 'a11y text',
+    link: 'www.google.com',
+    }
   },
   mutations: {
     increment: state => state.count++,
     decrement: state => state.count--,
     getTitle: (state, title) => state.title = title,
     getImage: (state, src) => state.src = src,
+    getDetails: (state, details) => state.details = details,
   },
   actions: {
 

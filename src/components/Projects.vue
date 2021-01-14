@@ -1,9 +1,9 @@
 <template>
   <div class="hello">
     <ul class="work">
-      <li class="work__item" v-for="project in projects" :key="project.id" @click="getProjectData(project.title, project.src)">
+      <li class="work__item" v-for="project in projects" :key="project.id" @click="setProjectDetails(project)">
         <router-link :to="/projects/ + project.slug">
-          <img :src="'../' + project.thumbnail" alt="project.a11y">
+          <img :src="'../static/images/thumbnails/' + project.thumbnail" alt="project.a11y">
         </router-link>
       </li>
     </ul>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Project from './Project.vue'
+// import Project from './Project.vue'
 import store from '../router/store'
 import {projects} from './data.js'
 export default {
@@ -25,28 +25,18 @@ export default {
     }
   },
   computed: {
-    count () {
-	    return store.state.count
-    },
-    id () {
-      return store.state.id
-    },
-    title () {
-      return store.state.title
-    },
-    src () {
-      return store.state.src
+    details () {
+      return store.state.details
     }
   },
   methods: {
-    getProjectData (title, src) {
-      this.$store.commit('getTitle', title)
-      this.$store.commit('getImage', src)
+    setProjectDetails (details) {
+      this.$store.commit('getDetails', details)
     }
   },
-  components: {
-    project: Project,
-	}
+  // components: {
+  //   project: Project,
+	// }
 }
 </script>
 

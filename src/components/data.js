@@ -3,7 +3,7 @@ const projects = [
     id: 1,
     slug: 'project-1',
     title: 'Project Uno',
-    thumbnail: 'static/images/thumbnails/memory.png',
+    thumbnail: 'memory.png',
     thumbnail_caption: 'website',
     images: [
       'static/images/preview/preview-artifact.jpg'
@@ -14,13 +14,12 @@ const projects = [
     ],
     a11y: 'a11y text',
     link: 'www.google.com',
-    
   },
   {
     id: 2,
     slug: 'project-2',
     title: 'Project 2',
-    thumbnail: 'static/images/thumbnails/logo-ats.png',
+    thumbnail: 'logo-ats.png',
     thumbnail_caption: 'website',
     images: [
       'static/images/preview/preview-ats.jpg',
@@ -32,13 +31,12 @@ const projects = [
     ],
     a11y: 'a11y text',
     link: 'www.google.com',
-    
   },
   {
     id: 3,
     slug: 'project-3',
     title: 'Project 3',
-    thumbnail: 'static/images/thumbnails/sub.png',
+    thumbnail: 'sub.png',
     thumbnail_caption: 'website',
     images: [
       'staticimages/preview/preview-sub.jpg'
@@ -49,7 +47,6 @@ const projects = [
     ],
     a11y: 'a11y text',
     link: 'www.google.com',
-    
   },
 ];
 
