@@ -496,8 +496,6 @@ export default {
   },
   methods: {
     leave (el, done) {
-      console.log('leave', this.transitionName)
-      // const heroTitle = lineSplit('h1');
 
       const master = gsap.timeline({
         onStart: () => {
@@ -505,7 +503,6 @@ export default {
           console.log("onStart leave")
         },
         onComplete: () => {
-          console.log('leave on compleate')
           done();
         },
       });
@@ -517,13 +514,10 @@ export default {
       }
     },
     enter (el, done) {
-      console.log('enter', this.transitionName)
-      // const heroTitle = lineSplit('h1');
 
       const master = gsap.timeline({
         onComplete: () => {
           document.body.classList.remove('body--overflow');
-          console.log("on enter onComplete")
           done();
         },
       });

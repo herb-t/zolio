@@ -6,12 +6,11 @@ import Contact from '@/components/Contact';
 
 // Projects
 import Project from '@/components/Project';
-import ProjectOne from '@/components/projects/ProjectOne';
-import ProjectTwo from '@/components/projects/ProjectTwo';
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -29,17 +28,7 @@ export default new Router({
       component: Contact
     },
     {
-      path: '/projects/project-1/',
-      name: 'Project One',
-      component: ProjectOne,
-    },
-    {
-      path: '/projects/project-2/',
-      name: 'Project Two',
-      component: ProjectTwo,
-    },
-    {
-      path: '/detail/',
+      path: '/projects/:id',
       name: 'Project Detail',
       component: Project,
     },

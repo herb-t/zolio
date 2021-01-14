@@ -2,7 +2,9 @@
   <div class="hello">
     <ul class="work">
       <li class="work__item" v-for="project in projects" :key="project.id" @click="getProjectData(project.title, project.src)">
-        <router-link to="/detail/">{{project.title}}</router-link>
+        <router-link :to="/projects/ + project.slug">
+          <img :src="'../' + project.thumbnail" alt="project.a11y">
+        </router-link>
       </li>
     </ul>
   </div>
@@ -11,6 +13,7 @@
 <script>
 import Project from './Project.vue'
 import store from '../router/store'
+import {projects} from './data.js'
 export default {
   name: 'Projects',
   store,
@@ -18,23 +21,7 @@ export default {
   data () {
     return {
       msg: 'Work page',
-      projects: [
-        {
-          id: 1,
-          title: 'Project 1',
-          src: 'srcOne'
-        },
-        {
-          id: 2,
-          title: 'Project 2',
-          src: 'srcTwo'
-        },
-        {
-          id: 3,
-          title: 'Project 3',
-          src: 'srcThree'
-        }
-      ],
+      projects: projects
     }
   },
   computed: {
