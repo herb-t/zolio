@@ -4,7 +4,7 @@
       <h1 class="anim__stagger-default">{{details.title}}</h1>
       <p class="anim__stagger-default">{{details.id}}</p>
       <p class="anim__stagger-default">{{details.thumbnail}}</p>
-      <p v-for="item in details.text" :key="item">{{item}}</p>
+      <p class="anim__stagger-default" v-for="item in details.text" :key="item">{{item}}</p>
     </div>
   </div>
 </template>

@@ -434,6 +434,8 @@ const enterStaggerAnimation = item => {
     {
       yPercent: '0',
       opacity: 1,
+      duration: 0.6,
+      ease: 'power4.out',
       stagger: 0.075,
     }
   );
@@ -461,7 +463,9 @@ const enterProjectsAnimation = item => {
     {
       yPercent: '0',
       opacity: 1,
-      stagger: 0.05,
+      duration: 0.4,
+      ease: 'back.out(1.15)',
+      stagger: 0.075,
     }
   );
 
@@ -472,7 +476,7 @@ const leaveProjectsAnimation = item => {
   const tl = gsap.timeline();
 
   tl.to(item, {
-    yPercent: '100',
+    yPercent: '20',
     opacity: 0,
     duration: 0.01
   });
