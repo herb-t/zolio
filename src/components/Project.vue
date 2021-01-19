@@ -11,6 +11,7 @@
 
 <script>
 import store from '../router/store'
+import {projects} from './data.js'
 
 export default {
   name: 'Project',
@@ -18,13 +19,17 @@ export default {
   props: ['projectTitle', 'projectId', 'projectSrc'],
   data () {
     return {
-      msg: 'Project post page'
+      msg: 'Project post page',
+      projects: projects
     }
   },
   computed: {
     details () {
-      return store.state.details
-    },
+      return this.projects.find(project => project.slug === this.$route.params.id)
+    }
+  },
+  mounted: function() {
+    console.log('Project Page - mounted()')
   },
   methods: {
 

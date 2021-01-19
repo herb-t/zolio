@@ -23,5 +23,8 @@ export default new Vuex.Store({
   actions: {
   },
   getters: {
+    // getProjectSlug: state => {
+    //   return state.details.find(project => project.slug)
+    // }
   }
 })

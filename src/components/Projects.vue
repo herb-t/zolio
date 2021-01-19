@@ -60,7 +60,8 @@ h5 {
 <template>
   <div class="hello">
     <ul class="work">
-      <li class="work__item" v-for="project in projects" :key="project.id" @click="setProjectDetails(project)">
+      <!-- <li class="work__item" v-for="project in projects" :key="project.id" @click="setProjectDetails(project)"> -->
+      <li class="work__item" v-for="project in projects" :key="project.id">
         <router-link :to="/projects/ + project.slug">
           <figure>
             <img class="work__item-image" :src="'../static/images/thumbnails/' + project.thumbnail" alt="project.a11y">
@@ -92,14 +93,14 @@ export default {
     }
   },
   computed: {
-    details () {
-      return store.state.details
-    }
+    // details () {
+    //   return store.state.details
+    // }
   },
   methods: {
-    setProjectDetails (details) {
-      this.$store.commit('getDetails', details)
-    }
+    // setProjectDetails (details) {
+    //   this.$store.commit('getDetails', details)
+    // }
   },
   // components: {
   //   project: Project,
