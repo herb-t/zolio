@@ -422,9 +422,11 @@ footer {
 </template>
 
 <script>
+// move animation stuff to another file
 import gsap from "gsap";
-import TextPlugin from "gsap/TextPlugin";
-gsap.registerPlugin(TextPlugin);
+import {loadImages} from './js/utils.js';
+// import TextPlugin from "gsap/TextPlugin";
+// gsap.registerPlugin(TextPlugin);
 
 const enterStaggerAnimation = item => {
   const tl = gsap.timeline();
@@ -489,12 +491,19 @@ export default {
   data () {
     return {
       transitionName: null,
+      toProjectPage: null
     }
   },
   watch: {
     '$route' (to, from) {
       const toDepth = to.path.split('/').length
       const fromDepth = from.path.split('/').length
+      if (to.path.includes('projects')) {
+        console.log(to.path)
+        this.toProjectPage = true;
+      } else {
+        this.toProjectPage = false;
+      }
       this.transitionName = toDepth < fromDepth ? 'to-projects' : 'from-projects'
     }
   },
@@ -507,6 +516,9 @@ export default {
           console.log("onStart leave")
         },
         onComplete: () => {
+          if (document.body.classList.contains('images-are-loaded')) {
+            document.body.classList.remove('images-are-loaded');
+          }
           done();
         },
       });
@@ -529,9 +541,27 @@ export default {
       if (this.transitionName === 'to-projects') {
         master.add(enterProjectsAnimation('.work__item'), '<')
       } else {
-        master.add(enterStaggerAnimation('.anim__stagger-default'), '<')
+        if (this.toProjectPage) {
+          console.log('going to a project page')
+          // master.add(enterStaggerAnimation('.anim__stagger-default'), '<')
+        } else {
+          console.log('going to about or contact page')
+          master.add(enterStaggerAnimation('.anim__stagger-default'), '<')
+        }
       }
     },
+  },
+  mounted: function() {
+    if (!document.body.classList.contains('is-loaded')) {
+      console.log('inial load has happened')
+      loadImages([
+      '../static/images/about-img.jpg',
+      '../static/images/contact-bg.jpg'
+    ], function() {
+      document.body.classList.add('is-loaded');
+    });
+    }
+    
   }
 }
 </script>

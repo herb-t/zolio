@@ -23,8 +23,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .contact__background {
-  opacity: 0;
-  background-image: url('../assets/contact-bg.jpg');
+  background-image: url('/static/images/contact-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

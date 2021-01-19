@@ -62,9 +62,9 @@ h5 {
     <ul class="work">
       <!-- <li class="work__item" v-for="project in projects" :key="project.id" @click="setProjectDetails(project)"> -->
       <li class="work__item" v-for="project in projects" :key="project.id">
-        <router-link :to="/projects/ + project.slug">
+        <router-link :to="'/projects/' + project.slug">
           <figure>
-            <img class="work__item-image" :src="'../static/images/thumbnails/' + project.thumbnail" alt="project.a11y">
+            <img class="work__item-image" :src="'../static/images/thumbnails/' + project.thumbnail" :alt="project.a11y">
             <figcaption>
               <div class="work__item-caption">
                 <h5>{{project.title}}</h5>
