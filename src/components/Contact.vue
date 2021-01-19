@@ -1,6 +1,6 @@
 <template>
   <div class="contact">
-    <div class="contact__background"></div>
+    <div class="contact__background anim__stagger-default"></div>
     <div class="contact__content">
       <p class="anim__stagger-default">Phone</p>
       <p class="anim__stagger-default">Email</p>
@@ -23,7 +23,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .contact__background {
-  background-image: url('https://placekitten.com/1920/1080');
+  opacity: 0;
+  background-image: url('../assets/contact-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -36,5 +37,6 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
+  transform: none !important;
 }
 </style>

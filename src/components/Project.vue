@@ -10,12 +10,10 @@
 </template>
 
 <script>
-import store from '../router/store'
 import {projects} from './data.js'
 
 export default {
   name: 'Project',
-  store,
   props: ['projectTitle', 'projectId', 'projectSrc'],
   data () {
     return {

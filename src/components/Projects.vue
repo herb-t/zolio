@@ -80,12 +80,9 @@ h5 {
 
 <script>
 // import Project from './Project.vue'
-import store from '../router/store'
 import {projects} from './data.js'
 export default {
   name: 'Projects',
-  store,
-  props: ['projectTitle', 'projectId', 'projectSrc'],
   data () {
     return {
       msg: 'Work page',
@@ -93,14 +90,8 @@ export default {
     }
   },
   computed: {
-    // details () {
-    //   return store.state.details
-    // }
   },
   methods: {
-    // setProjectDetails (details) {
-    //   this.$store.commit('getDetails', details)
-    // }
   },
   // components: {
   //   project: Project,
