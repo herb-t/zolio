@@ -80,7 +80,7 @@ h5 {
 
 <script>
 // import Project from './Project.vue'
-import {projects} from './data.js'
+import {projects} from '../js/data.js'
 export default {
   name: 'Projects',
   data () {

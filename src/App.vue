@@ -231,7 +231,6 @@ header {
 .app__page {
   box-sizing: border-box;
   margin: 0 28px;
-  width: 100%;
 }
 
 @media (min-width: 600px) {
@@ -321,6 +320,23 @@ footer {
   color: #fff;
 }
 
+/* .project-page-close {
+  position: fixed;
+  top: 120px;
+  right: 54px;
+  width: 40px;
+  height: 40px;
+  border-radius: 25px;
+  background: rgba(0, 0, 0, .6);
+  opacity: 0;
+  transform: translateX(15%) rotate(45deg) scale(0);
+}
+
+.project-page-close svg {
+  margin: 8px;
+  fill: #fff;
+} */
+
 </style>
 
 <template>
@@ -336,6 +352,12 @@ footer {
         </ul>
       </div>
     </header>
+
+    <!-- <div class="project-page-close">
+      <router-link to="/">
+        <svg role="img" class="app-icon app-icon--24px" alt=""><use xlink:href="#close"></use></svg>
+      </router-link>
+    </div> -->
 
     <main class="app__views app__page">
       <transition
@@ -425,66 +447,14 @@ footer {
 // move animation stuff to another file
 import gsap from "gsap";
 import {loadImages} from './js/utils.js';
-// import TextPlugin from "gsap/TextPlugin";
-// gsap.registerPlugin(TextPlugin);
-
-const enterStaggerAnimation = item => {
-  const tl = gsap.timeline();
-
-  tl.to(
-    item,
-    {
-      yPercent: '0',
-      opacity: 1,
-      duration: 0.6,
-      ease: 'power4.out',
-      stagger: 0.075,
-    }
-  );
-
-  return tl;
-};
-
-const leaveStaggerAnimation = item => {
-  const tl = gsap.timeline();
-
-  tl.to(item, {
-    yPercent: '15',
-    opacity: 0,
-    duration: 0.01
-  });
-
-  return tl;
-};
-
-const enterProjectsAnimation = item => {
-  const tl = gsap.timeline();
-
-  tl.to(
-    item,
-    {
-      yPercent: '0',
-      opacity: 1,
-      duration: 0.4,
-      ease: 'back.out(1.15)',
-      stagger: 0.075,
-    }
-  );
-
-  return tl;
-};
-
-const leaveProjectsAnimation = item => {
-  const tl = gsap.timeline();
-
-  tl.to(item, {
-    yPercent: '20',
-    opacity: 0,
-    duration: 0.01
-  });
-
-  return tl;
-};
+import {
+  enterStaggerAnimation,
+  leaveStaggerAnimation,
+  enterProjectsAnimation,
+  leaveProjectsAnimation,
+  enterCloseBtn,
+  leaveCloseBtn,
+} from './js/animation.js';
 
 export default {
   name: 'App',
@@ -498,12 +468,13 @@ export default {
     '$route' (to, from) {
       const toDepth = to.path.split('/').length
       const fromDepth = from.path.split('/').length
-      if (to.path.includes('projects')) {
-        console.log(to.path)
-        this.toProjectPage = true;
-      } else {
-        this.toProjectPage = false;
-      }
+      // if (to.path.includes('projects')) {
+      //   console.log(to.path)
+      //   this.toProjectPage = true;
+      // } else {
+      //   this.toProjectPage = false;
+      // }
+      to.path.includes('projects') ? this.toProjectPage = true : this.toProjectPage = false;
       this.transitionName = toDepth < fromDepth ? 'to-projects' : 'from-projects'
     }
   },
@@ -524,9 +495,11 @@ export default {
       });
 
       if (this.transitionName === 'to-projects') {
-        master.add(leaveProjectsAnimation('.work__item'), '<')
+        master
+            .add(leaveProjectsAnimation('.work__item'), '<')
       } else {
-        master.add(leaveStaggerAnimation('.anim__stagger-default'), '<')
+        master
+          .add(leaveStaggerAnimation('.anim__stagger-default'), '<')
       }
     },
     enter (el, done) {
@@ -543,10 +516,12 @@ export default {
       } else {
         if (this.toProjectPage) {
           console.log('going to a project page')
-          // master.add(enterStaggerAnimation('.anim__stagger-default'), '<')
+          master
+              .add(enterStaggerAnimation('.anim__stagger-default'), '<')
         } else {
           console.log('going to about or contact page')
-          master.add(enterStaggerAnimation('.anim__stagger-default'), '<')
+          master
+              .add(enterStaggerAnimation('.anim__stagger-default'), '<')
         }
       }
     },
