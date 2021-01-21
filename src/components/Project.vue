@@ -66,9 +66,9 @@
 </template>
 
 <script>
-import gsap from "gsap";
 import {projects} from '../js/data.js'
 import {loadImages} from '../js/utils.js';
+import {enterProjectPost} from '../js/animation.js';
 
 export default {
   name: 'Project',
@@ -90,43 +90,7 @@ export default {
   },
   methods: {
     imagesAreLoaded () {
-      console.log('images are loaded - do something')
-      let tl = gsap.timeline();
-
-      tl.fromTo(
-        '.anim__project-image',
-        {
-          yPercent: '15',
-          opacity: 0,
-          duration: 0.6,
-        },
-        {
-          yPercent: '0',
-          opacity: 1,
-          duration: 0.6,
-          ease: 'power4.out',
-          stagger: 0.075,
-        }
-      );
-
-      tl.fromTo(
-        '.project__close',
-        {
-          xPercent: '30',
-          opacity: 0,
-          rotate: 90,
-          scale: 0,
-          duration: 0.06
-        },
-        {
-          xPercent: '0',
-          opacity: 1,
-          duration: 0.2,
-          rotate: 0,
-          scale: 1,
-          ease: 'back.out(1.25)',
-        }
-      );
+      enterProjectPost('.anim__project-image', '.project__close');
     }
   }
 }
